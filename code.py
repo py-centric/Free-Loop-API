@@ -112,3 +112,26 @@ def schedule_delivery_time(url, headers, order_id, delivery_time):
             print("Response:", response.json())
     except requests.exceptions.RequestException as e:
         print("An error occurred:", e)
+
+url = "https://cb-public-api-f5dovyimaq-ew.a.run.app/trips/create"
+my_api_key = ""
+headers = headers = {"Content-Type": "application/json", "Authorization": f"Bearer {my_api_key}"}
+payload =  {
+    "branch_id": "",
+    "order_ids": [
+        "",
+        ""
+    ],
+    "vehicle_type": "car",
+    "compute_route": true
+}
+
+response = requests.post(url,headers =headers, json=data)
+
+if response.status_code == 200:
+    print("Trip created sucessfully!")
+    print(response.json())
+else:
+    print(f"Failed to create trip. Status code {response.status_code}")
+    print(response.text)
+    
